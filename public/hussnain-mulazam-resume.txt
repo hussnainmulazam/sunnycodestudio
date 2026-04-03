@@ -1,0 +1,114 @@
+HUSSNAIN MULAZAM
+Full-Stack Web Developer | AI & Agents Developer
+
+Email: hussnainmulazam@gmail.com
+Phone: +92 326 6655307
+GitHub: https://github.com/Sunny-Janjua
+LinkedIn: https://www.linkedin.com/in/hussnain-mulazam-4b3340288/
+
+SUMMARY
+Creative and passionate Full-Stack Developer with strong expertise in building scalable, user-friendly web applications using React, Next.js, FastAPI, Node.js, Express.js, PostgreSQL, and MongoDB. Adept at integrating AI agents using OpenAI’s Agents SDK, automating workflows, and developing intelligent systems. Skilled in both SQL and NoSQL databases and experienced in building RESTful APIs for production-grade applications. Currently mentoring and contributing to the developer community through Code with Sunny. Strong interest in AI, agents, backend development, and future technologies.
+
+SKILLS & TECHNOLOGIES
+Frontend: HTML5, CSS3, Tailwind CSS, JavaScript, TypeScript, React.js, React.js (Hooks), Next.js, Responsive UI/UX, Mobile-first Design
+Backend: Python (FastAPI), Node.js, Express.js, SQLModel, Mongoose, Supabase, SQL, PostgreSQL, MongoDB, RESTful APIs, JWT Authentication
+AI & Tools: OpenAI Agents SDK, Gemini API, LangChain, Pinecone Vector Database, Playwright Automation, AI (LLMs & Agents), Streamlit
+Other Tools: Docker, TablePlus, VS Code, Git, GitHub, Cisco Packet Tracer, Canva, MS Office
+
+WORK EXPERIENCE
+Tech Educator & Developer – Code with Sunny
+Duration: January 2024 – Present
+Teach and mentor developers in Python, FastAPI, and web development, focusing on practical skills. Create AI-based projects for students and the community. Develop and maintain learning resources and backend systems to support educational initiatives.
+
+Python Instructor – Corvit System Faisalabad
+Duration: March 24, 2024 – March 25, 2025
+Taught Python programming covering syntax, data structures, functions, file handling, OOP, and automation. Designed interactive lessons and projects to build practical skills for students and professionals.
+
+PROJECTS
+Blog Generator with AI Agents
+Stack: FastAPI, OpenAI Agents SDK, PostgreSQL
+AI-powered system that generates SEO-optimized 5,000-word blog posts on any user-specified topic. Blogs are stored in a relational database using SQLModel. Features a multi-agent workflow for research, writing, and editing to ensure high-quality, human-like content with real-world examples and structured outlines.
+
+Medical Chatbot Website
+Stack: Next.js, FastAPI, Pinecone, OpenAI
+Interactive chatbot designed to answer questions related to breast cancer, providing accurate and empathetic responses. Integrates Pinecone for semantic search on medical data. Built with a clean, user-friendly UI using Streamlit as the frontend, emphasizing real-time AI support for patients and caregivers.
+
+E-Commerce API Backend
+Stack: FastAPI, PostgreSQL, JWT
+Robust backend API for an e-commerce platform handling products, users, shopping carts, and authentication. Follows RESTful architecture with controller-based routing. Includes secure JWT-based login, user management, and database integration for efficient data handling.
+
+Instagram-Style UI in React Native
+Developed a mobile app UI mimicking Instagram's interface, featuring a story carousel, feed posts, likes, and comments. Focused on clean layout design, accurate icon implementation, and performance optimization for smooth user experience on iOS and Android.
+
+Automated Agent for Chrome Automation
+Stack: OpenAI Agent SDK, Playwright
+AI-driven automation script that launches Chrome, selects a Google account, searches for coding-themed wallpapers on Pexels, downloads the selected image, and sets it as the desktop background.
+
+Personal Portfolio Website
+Stack: Next.js, Tailwind CSS, Vercel
+A responsive personal website showcasing projects, certifications, skills, and resume. Includes dynamic sections for project galleries, blog posts, and contact forms. Optimized for SEO with server-side rendering and integrated with GitHub for automatic updates on project repositories.
+
+Number Guessing Game (Python Project)
+Stack: Python (console-based)
+Simple interactive game where the user guesses a randomly generated number within a specified range. Features hints ("too high" / "too low"), score tracking based on attempts, and multiple difficulty levels.
+
+Command-Line To-Do List App (Python Project)
+Stack: Python, SQLite
+A terminal-based task management application allowing users to add, view, update, delete, and prioritize tasks. Uses file-based or SQLite storage for persistence across sessions.
+
+Basic Calculator (Python Project)
+Stack: Python (console-based)
+A calculator supporting addition, subtraction, multiplication, division, and modulus. Handles user input validation and division by zero.
+
+Hangman Game (Python Project)
+Stack: Python (console-based)
+Classic word-guessing game with random word selection, input validation, and win/loss conditions.
+
+Weather CLI Tool (Python Project)
+Stack: Python, Requests
+CLI tool that fetches and displays weather data for any city using a weather API. Parses JSON and formats output.
+
+Tic-Tac-Toe Game (Python Project)
+Stack: Python (console-based)
+Two-player game with a 3x3 grid, alternating turns, and checks for wins/draws/invalid moves. Optional basic AI opponent (minimax).
+
+EDUCATION
+BS Information Technology (BSIT) – Government College University, Faisalabad
+Expected Graduation: 2026
+
+ICS (Intermediate in Computer Science) – Superior College, Depalpur
+Graduated: 2022
+
+CERTIFICATIONS & PROFESSIONAL DEVELOPMENT
+Stanford University's Code in Place — Stanford University — June 6, 2025
+Google IT Automation with Python Professional Certificate — Google via Coursera — September 3, 2025
+Introduction to Generative AI Learning Path (Specialization) — Google Cloud via Coursera — July 31, 2025
+AI Foundations — IBM-SkillsBuild — September 13, 2025
+Cloud Essentials — IBM — September 14, 2025
+Introduction to Cloud — IBM SkillsBuild — September 15, 2025
+Troubleshooting and Debugging Techniques — Google via Coursera — August 20, 2025
+Introduction to Git and GitHub — Google via Coursera — August 14, 2025
+Introduction to Generative AI — Google Cloud via Coursera — July 30, 2025
+Using Python to Interact with the Operating System — Google via Coursera — August 11, 2025
+Accelerate Your Job Search with AI — Google via Coursera — September 3, 2025
+Automating Real-World Tasks with Python — Google via Coursera — September 3, 2025
+Introduction to Responsible AI — Google Cloud via Coursera — July 30, 2025
+Crash Course on Python — Google via Coursera — August 4, 2025
+Configuration Management and the Cloud — Google via Coursera — August 30, 2025
+Responsible AI: Applying AI Principles with Google Cloud — Google Cloud via Coursera — July 31, 2025
+Introduction to Large Language Models — Google Cloud via Coursera — July 30, 2025
+Python Skill Up — Not specified — Not specified
+Deloitte Australia Cyber Job Simulation on Forage — Deloitte Australia via Forage — September 15, 2025
+Deloitte Australia Technology Job Simulation on Forage — Deloitte Australia via Forage — August 16, 2025
+Deloitte Australia Data Analytics Job Simulation on Forage — Deloitte Australia via Forage — August 15, 2025
+
+GOALS & INTERESTS
+- Become a Software Engineer and AI Expert
+- Master AI agents, automation, and real-world integrations
+- Passionate about solving complex problems
+- Love exploring tech trends and building creative systems
+
+LANGUAGES
+Urdu (Native)
+English
+
