@@ -31,17 +31,28 @@ export const Sidebar = () => {
       <AnimatePresence>
         {open && (
           <motion.div
+            key="backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setOpen(false)}
+            className="fixed inset-0 z-[90] bg-neutral-900/50 lg:hidden backdrop-blur-sm"
+          />
+        )}
+        {open && (
+          <motion.div
+            key="sidebar"
             initial={{ x: -200 }}
             animate={{ x: 0 }}
             transition={{ duration: 0.2, ease: "linear" }}
             exit={{ x: -200 }}
-            className="px-6  z-[100] py-10 bg-neutral-100 max-w-[14rem] lg:w-fit  fixed lg:relative  h-screen left-0 flex flex-col justify-between"
+            className="px-6 z-[100] py-10 bg-neutral-100 w-[16rem] lg:w-fit fixed lg:relative h-screen left-0 flex flex-col justify-between shadow-2xl lg:shadow-none"
           >
             <div className="flex-1 overflow-auto">
               <SidebarHeader />
               <Navigation setOpen={setOpen} />
             </div>
-            <div onClick={() => isMobile() && setOpen(false)}>
+            <div onClick={() => window.innerWidth < 1024 && setOpen(false)}>
               <Badge href="/resume" text="Read Resume" />
             </div>
           </motion.div>
