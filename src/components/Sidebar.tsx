@@ -4,7 +4,7 @@ import { Navlink } from "@/types/navlink";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { twMerge } from "tailwind-merge";
 import { Heading } from "./Heading";
 import { socials } from "@/constants/socials";
@@ -15,6 +15,16 @@ import { isMobile } from "@/lib/utils";
 
 export const Sidebar = () => {
   const [open, setOpen] = useState(isMobile() ? false : true);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const isMobile = window.matchMedia("(max-width: 1024px)").matches;
+      setOpen(!isMobile);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <>
@@ -106,7 +116,7 @@ export const Navigation = ({
 
 const SidebarHeader = () => {
   return (
-    <div className="flex space-x-2">
+    <Link href="/" className="flex space-x-2 cursor-pointer">
       <Image
         src="/profile.jpeg"
         alt="Hussnain Mulazam"
@@ -118,6 +128,6 @@ const SidebarHeader = () => {
         <p className="font-bold text-primary">Hussnain Mulazam</p>
         <p className="font-light text-secondary">Full-Stack Developer</p>
       </div>
-    </div>
+    </Link>
   );
 };

@@ -427,16 +427,25 @@ export default function ResumePage() {
         <div className="space-y-6">
           <div className="rounded-xl border border-neutral-200 bg-white p-5">
             <Heading as="h3" className="text-lg lg:text-xl font-black">
-              Tech Educator &amp; Developer – Code with Sunny
+              Computer Lecturer – Chenab Group of College
             </Heading>
             <Paragraph className="mt-1">
-              Duration: January 2024 – Present
+              Duration: August 24, 2025 – Present
             </Paragraph>
             <Paragraph className="mt-3 max-w-3xl">
-              Teach and mentor developers in Python, FastAPI, and web development
-              with a focus on practical skills. Create AI-based projects for
-              students and the community. Develop and maintain learning resources
-              and backend systems to support educational initiatives.
+              Instructed students and professionals on Python &amp; C language fundamentals. Evaluated student progress and mentored them in practical coding assignments.
+            </Paragraph>
+          </div>
+
+          <div className="rounded-xl border border-neutral-200 bg-white p-5">
+            <Heading as="h3" className="text-lg lg:text-xl font-black">
+              Agentic AI Developer Intern – FISTA SOLUTION
+            </Heading>
+            <Paragraph className="mt-1">
+              Duration: June 2025 – August 2025
+            </Paragraph>
+            <Paragraph className="mt-3 max-w-3xl">
+              Worked as an Agentic AI Developer intern, contributing to the design and development of autonomous AI agent systems and intelligent automation workflows. Integrated AI solutions into practical applications.
             </Paragraph>
           </div>
 
@@ -445,13 +454,22 @@ export default function ResumePage() {
               Python Instructor – Corvit System Faisalabad
             </Heading>
             <Paragraph className="mt-1">
-              Duration: March 24, 2024 – March 25, 2025
+              Duration: March 24, 2024 – March 25, 2025 (6 months)
             </Paragraph>
             <Paragraph className="mt-3 max-w-3xl">
-              Taught Python programming covering syntax, data structures,
-              functions, file handling, OOP, and automation. Designed interactive
-              lessons and projects to build practical skills for students and
-              professionals.
+              Instructed students and professionals on Python fundamentals, including Object-Oriented Programming (OOP) and automation. Guided students in building automation scripts and practical projects.
+            </Paragraph>
+          </div>
+
+          <div className="rounded-xl border border-neutral-200 bg-white p-5">
+            <Heading as="h3" className="text-lg lg:text-xl font-black">
+              Tech Educator &amp; Developer – Code with Sunny
+            </Heading>
+            <Paragraph className="mt-1">
+              Duration: January 2024 – Present
+            </Paragraph>
+            <Paragraph className="mt-3 max-w-3xl">
+              Mentor developers in Python, FastAPI, and full-stack web development through practical, hands-on projects. Foster a community of developers by sharing industry best practices.
             </Paragraph>
           </div>
         </div>
