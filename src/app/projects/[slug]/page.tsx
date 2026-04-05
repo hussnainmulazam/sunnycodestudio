@@ -24,9 +24,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   } else {
     return {
-      title: "Projects | John Doe",
+      title: "Projects | Hussnain Mulazam",
       description:
-        "John Doe is a developer, writer and speaker. He is a digital nomad and travels around the world while working remotely.",
+        "Hussnain Mulazam is a Full-Stack Web Developer and AI Engineer. He builds scalable web apps, REST APIs, and AI-agent powered systems.",
     };
   }
 }
