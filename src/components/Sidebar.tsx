@@ -4,30 +4,31 @@ import { Navlink } from "@/types/navlink";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { Heading } from "./Heading";
 import { socials } from "@/constants/socials";
 import { Badge } from "./Badge";
 import { AnimatePresence, motion } from "framer-motion";
 import { IconLayoutSidebarRightCollapse } from "@tabler/icons-react";
-import { isMobile } from "@/lib/utils";
 
 export const Sidebar = () => {
-  const [open, setOpen] = useState(isMobile() ? false : true);
-
-  useEffect(() => {
-    const handleResize = () => {
-      const isMobile = window.matchMedia("(max-width: 1024px)").matches;
-      setOpen(!isMobile);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const [open, setOpen] = useState(false);
 
   return (
     <>
+      {/* Desktop Sidebar: purely CSS controlled, never unmounts, perfectly responsive */}
+      <div className="hidden lg:flex px-6 z-[100] py-10 bg-neutral-100 w-fit relative h-screen flex-col justify-between flex-shrink-0">
+        <div className="flex-1 overflow-auto">
+          <SidebarHeader />
+          <Navigation setOpen={setOpen} />
+        </div>
+        <div>
+          <Badge href="/resume" text="Read Resume" />
+        </div>
+      </div>
+
+      {/* Mobile Sidebar: exclusively controlled by state and Framer Motion */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -46,23 +47,25 @@ export const Sidebar = () => {
             animate={{ x: 0 }}
             transition={{ duration: 0.2, ease: "linear" }}
             exit={{ x: -200 }}
-            className="px-6 z-[100] py-10 bg-neutral-100 w-[16rem] lg:w-fit fixed lg:relative h-screen left-0 flex flex-col justify-between shadow-2xl lg:shadow-none"
+            className="px-6 z-[100] py-10 bg-neutral-100 w-[16rem] fixed h-screen left-0 flex flex-col justify-between shadow-2xl lg:hidden"
           >
             <div className="flex-1 overflow-auto">
               <SidebarHeader />
               <Navigation setOpen={setOpen} />
             </div>
-            <div onClick={() => window.innerWidth < 1024 && setOpen(false)}>
+            <div onClick={() => setOpen(false)}>
               <Badge href="/resume" text="Read Resume" />
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+      
+      {/* Mobile Toggle Button */}
       <button
-        className="fixed lg:hidden bottom-4 right-4 h-8 w-8 border border-neutral-200 rounded-full backdrop-blur-sm flex items-center justify-center z-50"
+        className="fixed lg:hidden bottom-4 right-4 h-10 w-10 border border-neutral-200 rounded-full backdrop-blur-md bg-white/80 shadow-lg flex items-center justify-center z-[110]"
         onClick={() => setOpen(!open)}
       >
-        <IconLayoutSidebarRightCollapse className="h-4 w-4 text-secondary" />
+        <IconLayoutSidebarRightCollapse className="h-5 w-5 text-secondary" />
       </button>
     </>
   );
@@ -74,7 +77,6 @@ export const Navigation = ({
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const pathname = usePathname();
-
   const isActive = (href: string) => pathname === href;
 
   return (
@@ -83,7 +85,7 @@ export const Navigation = ({
         <Link
           key={link.href}
           href={link.href}
-          onClick={() => isMobile() && setOpen(false)}
+          onClick={() => setOpen(false)}
           className={twMerge(
             "text-secondary hover:text-primary transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-sm",
             isActive(link.href) && "bg-white shadow-lg text-primary"
