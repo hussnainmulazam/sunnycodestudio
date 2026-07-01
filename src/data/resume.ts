@@ -96,9 +96,9 @@ export const resumeData = {
   projects: [
     {
       name: "AutoPost Agentic AI System",
-      stack: "Python, LangChain, OpenAI Agents SDK, Social Media APIs",
+      stack: "Next.js, FastAPI, OpenAI Agents SDK, Pinecone, PostgreSQL",
       description:
-        "Built an agentic AI system that automatically creates, schedules, and publishes social media posts. Supports multiple platforms including LinkedIn, Instagram, Twitter, and Facebook using platform APIs.",
+        "AutoPost Agentic AI is an intelligent social media automation platform that uses a multi-agent architecture to research trending topics, generate content, create AI images, suggest hashtags, optimize SEO, and schedule or publish posts across multiple platforms.",
     },
     {
       name: "Blog Generator with AI Agents",
@@ -108,9 +108,9 @@ export const resumeData = {
     },
     {
       name: "AIvonTech — AI Solutions Platform",
-      stack: "Next.js, FastAPI, OpenAI API, PostgreSQL",
+      stack: "Next.js, FastAPI, OpenAI API, Pinecone, PostgreSQL",
       description:
-        "Delivered production-ready multi-agent AI workflows automating research, content generation, and data processing. Integrated RAG pipelines and vector search to power domain-specific AI features for startup clients.",
+        "AivonTech is an AI-focused software development company specializing in intelligent automation, Agentic AI, full-stack web applications, and scalable backend systems built using FastAPI, Next.js, PostgreSQL, Docker, Pinecone, and LLMs.",
     },
     {
       name: "Medical Chatbot — Breast Cancer Q&A Platform",
@@ -119,16 +119,22 @@ export const resumeData = {
         "Developed AI chatbot using RAG with Pinecone vector database for accurate domain-specific medical queries. Built patient-friendly UI integrated with real-time OpenAI responses for caregivers and patients.",
     },
     {
-      name: "E-Commerce API Backend",
-      stack: "FastAPI, PostgreSQL, JWT Authentication",
+      name: "Study Nova — AI-Powered Learning Platform",
+      stack: "Next.js, FastAPI, OpenAI Agents SDK, Pinecone, PostgreSQL",
       description:
-        "Designed production-grade REST API handling products, carts, users, and secure authentication. Implemented JWT login, role-based access control, and controller-based routing architecture.",
+        "Study Nova is an AI-powered educational platform that delivers personalized learning experiences using Large Language Models (LLMs) and Retrieval-Augmented Generation (RAG). Built with Next.js, FastAPI, PostgreSQL, Pinecone, and the OpenAI Agents SDK, it enables students to upload study materials, interact with an AI tutor, generate quizzes and summaries, track learning progress, and receive context-aware answers based on their own documents.",
     },
     {
       name: "Automated Browser Agent",
       stack: "OpenAI Agents SDK, Playwright, Python",
       description:
         "Created AI-driven browser automation performing multi-step tasks including web search, data extraction, and form filling.",
+    },
+    {
+      name: "Code with Sunny — AI-Powered Learning & Developer Community Platform",
+      stack: "Next.js, FastAPI, OpenAI Agents SDK, PostgreSQL",
+      description:
+        "Code with Sunny is an AI-powered e-learning and developer community platform that provides structured programming courses, interactive coding challenges, AI-assisted learning, progress tracking, and project-based education. Built with Next.js, FastAPI, PostgreSQL, and OpenAI technologies, it helps learners develop practical software engineering skills.",
     },
   ],
   certifications: [
