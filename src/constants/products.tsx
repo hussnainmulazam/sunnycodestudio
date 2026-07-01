@@ -132,7 +132,7 @@ export const products = [
       <div>
         <p className="mb-4">
           An AI-powered automated browser agent capable of performing complex multi-step workflows. 
-          By combining OpenAI's Agents SDK with Playwright, the agent acts as an autonomous user on the web.
+          By combining OpenAI&apos;s Agents SDK with Playwright, the agent acts as an autonomous user on the web.
         </p>
         <p className="mb-4">
           It can execute online research, navigate interfaces, bypass common form-filling hurdles, and extract 
