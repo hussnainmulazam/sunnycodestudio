@@ -14,30 +14,30 @@ import {
   IconBrandReact,
   IconBrandTailwind,
   IconBrandTypescript,
-  IconBrandVercel,
+  IconBrandPython,
+  IconBrandGithub,
 } from "@tabler/icons-react";
 
 export const TechStack = () => {
   const stack = [
-    { label: "Next.js", icon: IconBrandNextjs },
-    { label: "React.js", icon: IconBrandReact },
-    { label: "Java", icon: IconCode },
+    { label: "Python", icon: IconBrandPython },
     { label: "JavaScript", icon: IconBrandJavascript },
     { label: "TypeScript", icon: IconBrandTypescript },
+    { label: "Next.js", icon: IconBrandNextjs },
+    { label: "React.js", icon: IconBrandReact },
+    { label: "Tailwind CSS", icon: IconBrandTailwind },
     { label: "FastAPI", icon: IconApi },
     { label: "Node.js", icon: IconBrandNodejs },
     { label: "Express.js", icon: IconCode },
-    { label: "MongoDB", icon: IconDatabase },
-    { label: "Supabase", icon: IconDatabase },
-    { label: "SQL", icon: IconDatabase },
+    { label: "Django", icon: IconCode },
     { label: "PostgreSQL", icon: IconDatabase },
+    { label: "MongoDB", icon: IconDatabase },
+    { label: "MySQL", icon: IconDatabase },
+    { label: "Pinecone", icon: IconDatabase },
     { label: "OpenAI Agents SDK", icon: IconRobot },
     { label: "LangChain", icon: IconLink },
     { label: "Docker", icon: IconBrandDocker },
-    { label: "AI (LLMs & Agents)", icon: IconRobot },
-    { label: "Tailwind CSS", icon: IconBrandTailwind },
-    { label: "Framer Motion", icon: IconCode },
-    { label: "Vercel", icon: IconBrandVercel },
+    { label: "Git & GitHub", icon: IconBrandGithub },
   ];
   return (
     <div>

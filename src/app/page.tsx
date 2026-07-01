@@ -12,17 +12,13 @@ export default function Home() {
       <span className="text-4xl">👋</span>
       <Heading className="font-black">Hello there! I&apos;m Hussnain Mulazam</Heading>
       <Paragraph className="max-w-xl mt-4">
-        I&apos;m a full-stack developer that loves{" "}
-        <Highlight>building products</Highlight> and web apps that can impact
-        millions of lives
+        I&apos;m a <Highlight>Full Stack Developer | Agentic AI Developer | Python Developer</Highlight> who loves building AI-powered systems and scalable web applications.
       </Paragraph>
       <Paragraph className="max-w-xl mt-4">
-        I&apos;m a senior software engineer with{" "}
-        <Highlight>2+ years of experience</Highlight> building scalable web apps
-        that are performance optimized and good looking.
+        I have <Highlight>2+ years of experience</Highlight> building production-grade full stack applications, deploying scalable REST APIs, integrating RAG pipelines, and designing autonomous AI agents.
       </Paragraph>
       <Paragraph className="max-w-xl mt-4">
-        I work with technologies like <Highlight>React</Highlight>, <Highlight>Next.js</Highlight>, <Highlight>Tailwind CSS</Highlight>, <Highlight>Framer Motion</Highlight>, <Highlight>FastAPI</Highlight>, <Highlight>PostgreSQL</Highlight>, and <Highlight>MongoDB</Highlight>.
+        I&apos;m also the founder of <Highlight>AIvonTech</Highlight>, an AI startup delivering full stack web apps and smart automation systems that reduce manual work.
       </Paragraph>
       <Heading
         as="h2"

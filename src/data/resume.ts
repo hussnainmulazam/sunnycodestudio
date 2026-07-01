@@ -1,14 +1,14 @@
 export const resumeData = {
   name: "HUSSNAIN MULAZAM",
-  title: "Full-Stack Web Developer | AI & Agents Developer",
+  title: "Full Stack Developer | Agentic AI Developer | Python Developer",
   contact: {
     email: "hussnainmulazam@gmail.com",
     phone: "+92 326 6655307",
     github: "https://github.com/Sunny-Janjua",
-    linkedin: "https://www.linkedin.com/in/hussnain-mulazam-4b3340288/",
+    linkedin: "https://linkedin.com/in/hussnainmulazam",
   },
   summary:
-    "Creative and passionate Full-Stack Developer with strong expertise in building scalable, user-friendly web applications using React, Next.js, FastAPI, Node.js, Express.js, PostgreSQL, and MongoDB. Adept at integrating AI agents using OpenAI’s Agents SDK, automating workflows, and developing intelligent systems. Skilled in both SQL and NoSQL databases and experienced in building RESTful APIs for production-grade applications. Currently mentoring and contributing to the developer community through Code with Sunny. Strong interest in AI, agents, backend development, and future technologies.",
+    "Full Stack Developer and Python Developer with 2+ years of experience building web applications and AI-powered systems. Skilled in React.js, Next.js, FastAPI, and Agentic AI development using LangChain and OpenAI Agents SDK. Founder of AIvonTech, building smart automation systems and RAG pipelines that reduce manual work by 60–90%.",
   skills: {
     frontend: [
       "HTML5",
@@ -18,124 +18,167 @@ export const resumeData = {
       "TypeScript",
       "React.js",
       "Next.js",
-      "React.js (Hooks)",
-      "Responsive UI/UX",
-      "Mobile-first Design",
     ],
     backend: [
-      "Python (FastAPI)",
+      "FastAPI",
       "Node.js",
       "Express.js",
-      "SQLModel",
-      "Mongoose",
-      "Supabase",
-      "SQL",
+      "Django",
+      "REST APIs",
       "PostgreSQL",
       "MongoDB",
-      "RESTful APIs",
-      "JWT Authentication",
+      "MySQL",
+      "SQLite",
     ],
     ai: [
-      "OpenAI Agents SDK",
-      "Gemini API",
       "LangChain",
-      "Pinecone Vector Database",
-      "Playwright Automation",
-      "AI (LLMs & Agents)",
-      "Streamlit",
+      "OpenAI Agents SDK",
+      "RAG Pipelines",
+      "Vector Databases (Pinecone)",
+      "Prompt Engineering",
     ],
     tools: [
-      "Docker",
-      "TablePlus",
-      "VS Code",
       "Git",
       "GitHub",
-      "Cisco Packet Tracer",
-      "Canva",
-      "MS Office",
+      "Docker",
+      "VS Code",
+      "Postman",
+      "GitHub Actions",
+      "Linux",
+      "Playwright",
+      "LinkedIn API",
+      "Instagram API",
+      "Meta API",
     ],
   },
   experience: [
     {
-      role: "Tech Educator & Developer",
-      company: "Code with Sunny",
-      duration: "January 2024 – Present",
+      role: "Founder & AI Developer",
+      company: "AIvonTech",
+      duration: "March 2026 – Present",
       description:
-        "Teach and mentor developers in Python, FastAPI, and web development, focusing on practical skills. Create AI-based projects for students and the community. Develop and maintain learning resources and backend systems to support educational initiatives.",
+        "Founded AIvonTech, an AI startup delivering full stack web apps and agentic AI systems for early-stage startups. Developed full stack applications with Next.js and FastAPI, integrating RAG pipelines and LLM-powered features. Deployed scalable REST APIs and PostgreSQL databases for production-grade client projects.",
     },
     {
-      role: "Python Instructor",
-      company: "Corvit System Faisalabad",
-      duration: "March 24, 2024 – March 25, 2025",
+      role: "Agentic AI Developer",
+      company: "FISTA Solutions",
+      duration: "May 2025 – September 2025",
       description:
-        "Taught Python programming covering syntax, data structures, functions, file handling, OOP, and automation. Designed interactive lessons and projects to build practical skills for students and professionals.",
+        "Built production-grade agentic AI systems using Python, FastAPI, and OpenAI/Gemini APIs for autonomous task execution. Designed LLM-based pipelines with advanced prompt engineering, improving agent accuracy and response quality. Developed RESTful APIs with PostgreSQL integration to support AI-driven application features. Integrated AI agents with third-party APIs, enabling real-world automation across data retrieval workflows.",
+    },
+    {
+      role: "Computer Science Lecturer",
+      company: "Chenab Group of Colleges",
+      duration: "August 2025 – March 2026",
+      description:
+        "Taught programming, data structures, web development, and digital literacy to 50+ students. Designed project-based curriculum that improved student retention and practical coding skills.",
+    },
+    {
+      role: "Python & Web Development Instructor",
+      company: "Corvit Systems",
+      duration: "August 2024 – January 2025",
+      description:
+        "Delivered Python training covering OOP, data structures, file handling, and FastAPI to 30+ students. Designed interactive lessons and assignments that helped students transition into development roles.",
     },
   ],
   education: [
     {
-      program: "BS Information Technology (BSIT)",
-      school: "Government College University, Faisalabad",
-      date: "Expected Graduation: 2026",
+      program: "Bachelor of Science in Information Technology (BSIT)",
+      school: "Government College University, Faisalabad, Pakistan",
+      date: "Nov 2022 – June 2026",
     },
     {
-      program: "ICS (Intermediate in Computer Science)",
-      school: "Superior College, Depalpur",
-      date: "Graduated: 2022",
+      program: "Intermediate in Computer Science (ICS)",
+      school: "Superior College, Depalpur, Pakistan",
+      date: "Oct 2019 – May 2021",
     },
   ],
   projects: [
     {
-      name: "Blog Generator with AI Agents",
-      stack: "FastAPI, OpenAI Agents SDK, PostgreSQL",
+      name: "AutoPost Agentic AI System",
+      stack: "Python, LangChain, OpenAI Agents SDK, Social Media APIs",
       description:
-        "AI-powered system that generates SEO-optimized 5,000-word blog posts for any user topic. Stores content in PostgreSQL via SQLModel and uses a multi-agent workflow for research, writing, and editing.",
+        "Built an agentic AI system that automatically creates, schedules, and publishes social media posts. Supports multiple platforms including LinkedIn, Instagram, Twitter, and Facebook using platform APIs.",
     },
     {
-      name: "Medical Chatbot Website",
-      stack: "Next.js, FastAPI, Pinecone, OpenAI",
+      name: "Blog Generator with AI Agents",
+      stack: "FastAPI, OpenAI Agents SDK, PostgreSQL, SQLModel",
       description:
-        "Interactive chatbot for breast cancer Q&A with semantic search via Pinecone. Built with a clean, user-friendly UI emphasizing real-time AI support.",
+        "Built multi-agent pipeline (Research -> Writer -> Critic -> Formatter) generating SEO-optimized 5,000-word posts in under 10 minutes. Implemented relational database storage with SQLModel for persistent content management.",
+    },
+    {
+      name: "AIvonTech — AI Solutions Platform",
+      stack: "Next.js, FastAPI, OpenAI API, PostgreSQL",
+      description:
+        "Delivered production-ready multi-agent AI workflows automating research, content generation, and data processing. Integrated RAG pipelines and vector search to power domain-specific AI features for startup clients.",
+    },
+    {
+      name: "Medical Chatbot — Breast Cancer Q&A Platform",
+      stack: "Next.js, FastAPI, Pinecone, OpenAI API",
+      description:
+        "Developed AI chatbot using RAG with Pinecone vector database for accurate domain-specific medical queries. Built patient-friendly UI integrated with real-time OpenAI responses for caregivers and patients.",
     },
     {
       name: "E-Commerce API Backend",
-      stack: "FastAPI, PostgreSQL, JWT",
+      stack: "FastAPI, PostgreSQL, JWT Authentication",
       description:
-        "Backend API for products, users, carts, and authentication. RESTful, controller-based routing, secure JWT login, and efficient database integration.",
+        "Designed production-grade REST API handling products, carts, users, and secure authentication. Implemented JWT login, role-based access control, and controller-based routing architecture.",
     },
     {
-      name: "Instagram-Style UI in React Native",
-      stack: "React Native",
+      name: "Automated Browser Agent",
+      stack: "OpenAI Agents SDK, Playwright, Python",
       description:
-        "Mobile UI inspired by Instagram with story carousel, feed posts, likes, and comments—focused on layout accuracy and smooth performance.",
-    },
-    {
-      name: "Automated Agent for Chrome Automation",
-      stack: "OpenAI Agent SDK, Playwright",
-      description:
-        "AI-driven automation that launches Chrome, selects a Google account, searches Pexels for wallpapers, downloads an image, and sets it as the desktop background.",
-    },
-    {
-      name: "Personal Portfolio Website",
-      stack: "Next.js, Tailwind CSS, Vercel",
-      description:
-        "Responsive personal site showcasing projects, certifications, skills, and resume with SEO optimizations and dynamic sections.",
+        "Created AI-driven browser automation performing multi-step tasks including web search, data extraction, and form filling.",
     },
   ],
   certifications: [
     {
-      name: "Stanford University's Code in Place",
-      issuer: "Stanford University",
-      completionDate: "June 6, 2025",
+      name: "Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate",
+      issuer: "Oracle",
+      completionDate: "2025",
+      description: "Completed fundamentals of Oracle Cloud Infrastructure AI services, machine learning concepts, and cloud AI architecture.",
     },
     {
       name: "Google IT Automation with Python Professional Certificate",
       issuer: "Google via Coursera",
-      completionDate: "September 3, 2025",
+      completionDate: "September 2025",
+      description: "Completed a seven-course certificate covering Python, Git, IT automation, troubleshooting, debugging, configuration management, cloud practices, and AI-assisted job search strategies.",
     },
     {
-      name: "Introduction to Generative AI Learning Path (Specialization)",
+      name: "Introduction to Generative AI Learning Path (4-course)",
       issuer: "Google Cloud via Coursera",
-      completionDate: "July 31, 2025",
+      completionDate: "July 2025",
+      description: "Completed a 4-course specialization on generative AI, LLMs, and responsible AI. Courses: Introduction to Generative AI, Large Language Models, and Responsible AI.",
+    },
+    {
+      name: "Configuration Management and the Cloud (Docker, Kubernetes, CI/CD)",
+      issuer: "Google via Coursera",
+      completionDate: "August 2025",
+      description: "Covered configuration management, infrastructure as code, containers with Docker/Kubernetes, and safe CI/CD-style change deployment.",
+    },
+    {
+      name: "Stanford University Code in Place",
+      issuer: "Stanford University",
+      completionDate: "June 2025",
+      description: "Completed an introductory programming course equivalent to Stanford's CS106A Programming Methodologies, taught in Python. Built projects and earned the Final Project Badge.",
+    },
+    {
+      name: "AI Foundations",
+      issuer: "IBM SkillsBuild",
+      completionDate: "September 2025",
+      description: "Covered AI concepts, ethics, implications, machine learning fundamentals, and practical applications.",
+    },
+    {
+      name: "Deloitte Australia Cyber & Technology Job Simulation",
+      issuer: "Deloitte via Forage",
+      completionDate: "Aug–Sep 2025",
+      description: "Completed a cyber security and technology simulation: analyzed web activity logs, performed coding tasks, and supported investigation activities.",
+    },
+    {
+      name: "Introduction to Git and GitHub",
+      issuer: "Google via Coursera",
+      completionDate: "August 2025",
+      description: "Learned Git/GitHub fundamentals including branching, merging, collaboration workflows, and repository management.",
     },
   ],
   goalsAndInterests: [
@@ -144,6 +187,6 @@ export const resumeData = {
     "Passionate about solving complex problems",
     "Love exploring tech trends and building creative systems",
   ],
-  languages: ["Urdu (Native)", "English"],
+  languages: ["Urdu (Native)", "English (Professional Working Proficiency)"],
 };
 
