@@ -4,11 +4,26 @@ import type { Metadata } from "next";
 import { twMerge } from "tailwind-merge";
 import { Footer } from "@/components/Footer";
 import { cn } from "@/lib/utils";
+import { Montserrat, Open_Sans } from "next/font/google";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
+  variable: "--font-heading",
+  display: "swap",
+});
+
+const openSans = Open_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-body",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  title: "Hussnain Mulazam - Full-Stack Developer",
+  title: "Hussnain Mulazam - Senior Full Stack AI Developer",
   description:
-    "Hussnain Mulazam is a Full-Stack Developer and AI & Agents Developer, building scalable web apps and backend systems.",
+    "Hussnain Mulazam is a Senior Full Stack AI Developer with 4+ years of experience specializing in React, Next.js, Node.js, Python, FastAPI, AI Agents, and scalable SaaS platforms.",
 };
 
 export default function RootLayout({
@@ -17,10 +32,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={cn("font-sans")}>
+    <html
+      lang="en"
+      className={cn(montserrat.variable, openSans.variable, "font-sans antialiased")}
+    >
       <body
         className={twMerge(
-          "flex antialiased h-screen overflow-hidden bg-gray-100"
+          "flex antialiased h-screen overflow-hidden bg-gray-100 text-neutral-800"
         )}
       >
         <Sidebar />

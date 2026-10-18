@@ -26,60 +26,39 @@ export const Blogs = ({ blogs }: { blogs: Blog[] }) => {
         >
           <Link
             key={`blog-${blog.title}`}
-            href={`/blog/${blog.slug}`}
-            className="relative my-10 block"
-            onMouseEnter={() => setHovered(blog.slug)}
-            onMouseLeave={() => setHovered(null)}
+            href={`/articles/${blog.slug}`}
+            className="group p-5 sm:p-6 rounded-2xl border border-neutral-200 bg-white hover:border-neutral-300 hover:shadow-md transition-all duration-200 flex flex-col md:flex-row gap-6 items-start my-6"
           >
-            <AnimatePresence mode="wait">
-              {hovered === blog.slug && (
-                <motion.div
-                  initial={{
-                    opacity: 0,
-                    scaleX: 0.95,
-                    scaleY: 0.95,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    scaleX: 1.05,
-                    scaleY: 1.2,
-                  }}
-                  exit={{
-                    opacity: 0,
-
-                    scaleX: 0.95,
-                    scaleY: 0.95,
-                  }}
-                  className="absolute z-0 pointer-events-none bg-gray-50 inset-0 h-full w-full   rounded-md "
-                />
-              )}
-            </AnimatePresence>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 relative z-20">
-              <Image
-                src={blog.image}
-                alt="thumbnail"
-                height="200"
-                width="200"
-                objectFit="cover"
-                className="rounded-md object-cover h-40 w-60"
-              />
-              <div className="flex flex-col col-span-3">
-                <Heading className="text-lg md:text-lg lg:text-lg">
+            <Image
+              src={blog.image}
+              alt={blog.title}
+              height="200"
+              width="280"
+              className="rounded-xl object-cover h-36 w-full md:w-52 flex-shrink-0 border border-neutral-100 shadow-2xs group-hover:scale-[1.02] transition-transform duration-200"
+            />
+            <div className="flex flex-col justify-between h-full flex-1">
+              <div>
+                <h3 className="font-heading font-bold text-lg md:text-xl text-neutral-900 group-hover:text-blue-600 transition-colors">
                   {blog.title}
-                </Heading>
-                <Paragraph className="text-sm md:text-sm lg:text-sm mt-2">
+                </h3>
+                <Paragraph className="text-sm mt-2 text-neutral-600 leading-relaxed">
                   {blog.description}
                 </Paragraph>
-                <div className="flex space-x-2 flex-wrap mt-4">
-                  {blog.tags?.map((tag, index) => (
+              </div>
+              <div className="flex items-center justify-between pt-4 mt-2 flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5">
+                  {blog.tags?.map((tag) => (
                     <span
-                      key={`tag-${blog.slug}`}
-                      className="text-xs px-1 py-0.5 text-secondary border border-neutral-200 bg-white rounded-md"
+                      key={`tag-${blog.slug}-${tag}`}
+                      className="text-xs font-medium bg-neutral-50 text-neutral-700 px-2.5 py-1 rounded-md border border-neutral-200/80"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
+                <span className="text-xs font-semibold text-blue-600 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                  Read Article &rarr;
+                </span>
               </div>
             </div>
           </Link>

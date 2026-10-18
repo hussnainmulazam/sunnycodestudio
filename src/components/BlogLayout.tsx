@@ -26,40 +26,57 @@ export function BlogLayout({
   isRssFeed = false,
   previousPathname,
 }: any) {
-
   return (
     <Container>
-      <article>
+      <article className="max-w-3xl">
         <header className="flex flex-col">
           <Link
-            type="button"
-            href="/blog"
-            aria-label="Go back to articles"
-            className="group mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 transition  "
+            href="/articles"
+            className="group inline-flex items-center gap-2 mb-6 text-xs font-semibold text-neutral-600 hover:text-blue-600 transition-colors w-fit px-3 py-1.5 rounded-full border border-neutral-200 bg-white hover:border-neutral-300 shadow-2xs"
           >
-            <ArrowLeftIcon className="h-4 w-4 stroke-zinc-500 transition group-hover:stroke-zinc-700 d" />
+            <ArrowLeftIcon className="h-3.5 w-3.5 stroke-neutral-500 group-hover:stroke-blue-600 transition-colors" />
+            <span>Back to articles</span>
           </Link>
 
-          <Heading className=" py-4">{meta.title}</Heading>
-          <time
-            dateTime={meta.date}
-            className="flex items-center text-base text-zinc-400 "
-          >
-            <Paragraph className=" text-zinc-700">
+          <div className="flex flex-wrap items-center gap-2 mb-3">
+            {meta.tags?.map((tag: string) => (
+              <span
+                key={tag}
+                className="text-xs font-semibold px-2.5 py-0.5 rounded-md bg-blue-50 text-blue-700 border border-blue-200/60"
+              >
+                {tag}
+              </span>
+            ))}
+            <time
+              dateTime={meta.date}
+              className="text-xs font-medium text-neutral-500 ml-auto"
+            >
               {formatDate(meta.date)}
+            </time>
+          </div>
+
+          <Heading className="text-2xl sm:text-3xl lg:text-4xl font-black text-neutral-900 tracking-tight py-2 leading-tight">
+            {meta.title}
+          </Heading>
+
+          {meta.description && (
+            <Paragraph className="text-neutral-600 text-base md:text-lg mt-2 mb-6 leading-relaxed">
+              {meta.description}
             </Paragraph>
-          </time>
-          <div className="w-full mt-4 aspect-w-16 aspect-h-10 bg-gray-100 rounded-lg overflow-hidden xl:aspect-w-16 xl:aspect-h-10 relative">
+          )}
+
+          <div className="w-full mt-2 rounded-2xl overflow-hidden border border-neutral-200/80 shadow-sm relative">
             <Image
               src={meta.image}
-              alt="thumbnail"
+              alt={meta.title}
               height="800"
-              width="800"
-              className={`object-cover object-left-top w-full max-h-96`}
+              width="1200"
+              priority
+              className="object-cover w-full max-h-[420px]"
             />
           </div>
         </header>
-        <Prose className="mt-8">{children}</Prose>
+        <Prose className="mt-8 font-body text-neutral-700">{children}</Prose>
       </article>
     </Container>
   );

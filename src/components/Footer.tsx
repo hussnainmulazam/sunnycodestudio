@@ -22,8 +22,10 @@ export const Footer = () => {
                 Hussnain Mulazam
               </div>
               <p className="text-xs mt-2 text-neutral-600">
-                Full-Stack Web Developer focused on AI-powered apps &
-                automation.
+                Senior Full Stack AI Developer specializing in React, Next.js, Python &amp; AI Agents.
+              </p>
+              <p className="text-xs text-neutral-500 mt-1">
+                Lahore, Pakistan
               </p>
 
               <div className="mt-4 space-y-1 text-xs">

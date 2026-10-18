@@ -80,46 +80,39 @@ export const Navigation = ({
   const isActive = (href: string) => pathname === href;
 
   return (
-    <div className="flex flex-col space-y-1 my-10 relative z-[100]">
+    <div className="flex flex-col space-y-1.5 my-8 relative z-[100]">
       {navlinks.map((link: Navlink) => (
         <Link
           key={link.href}
           href={link.href}
           onClick={() => setOpen(false)}
           className={twMerge(
-            "text-secondary hover:text-primary transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-sm",
-            isActive(link.href) && "bg-white shadow-lg text-primary"
+            "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-200/50 transition-colors flex items-center space-x-2.5 py-2 px-3 rounded-xl text-sm font-medium",
+            isActive(link.href) && "bg-white shadow-2xs text-neutral-900 border border-neutral-200/80 font-semibold"
           )}
         >
           <link.icon
             className={twMerge(
-              "h-4 w-4 flex-shrink-0",
-              isActive(link.href) && "text-sky-500"
+              "h-4 w-4 flex-shrink-0 text-neutral-500",
+              isActive(link.href) && "text-blue-600"
             )}
           />
           <span>{link.label}</span>
         </Link>
       ))}
 
-      <Heading as="p" className="text-sm md:text-sm lg:text-sm pt-10 px-2">
+      <p className="text-[11px] font-bold uppercase tracking-wider text-neutral-400 pt-7 px-3 mb-1">
         Socials
-      </Heading>
+      </p>
       {socials.map((link: Navlink) => (
         <Link
           key={link.href}
           href={link.href}
           target="_blank"
           rel="noreferrer"
-          className={twMerge(
-            "text-secondary hover:text-primary transition duration-200 flex items-center space-x-2 py-2 px-2 rounded-md text-sm"
-          )}
+          className="text-neutral-600 hover:text-neutral-900 hover:bg-neutral-200/50 transition-colors flex items-center space-x-2.5 py-2 px-3 rounded-xl text-sm font-medium"
         >
-          <link.icon
-            className={twMerge(
-              "h-4 w-4 flex-shrink-0",
-              isActive(link.href) && "text-sky-500"
-            )}
-          />
+          <link.icon className="h-4 w-4 flex-shrink-0 text-neutral-500" />
           <span>{link.label}</span>
         </Link>
       ))}
@@ -129,17 +122,17 @@ export const Navigation = ({
 
 const SidebarHeader = () => {
   return (
-    <Link href="/" className="flex space-x-2 cursor-pointer">
+    <Link href="/" className="flex items-center space-x-3 cursor-pointer">
       <Image
         src="/profile.jpeg"
         alt="Hussnain Mulazam"
-        height={40}
-        width={40}
-        className="object-cover object-top rounded-full flex-shrink-0"
+        height={42}
+        width={42}
+        className="object-cover object-top rounded-full flex-shrink-0 border border-neutral-200 shadow-2xs"
       />
-      <div className="flex text-sm flex-col">
-        <p className="font-bold text-primary">Hussnain Mulazam</p>
-        <p className="font-light text-secondary">Full-Stack Developer</p>
+      <div className="flex flex-col">
+        <p className="font-heading font-bold text-neutral-900 text-sm">Hussnain Mulazam</p>
+        <p className="text-xs text-neutral-500 font-medium">Senior Full Stack AI Developer</p>
       </div>
     </Link>
   );

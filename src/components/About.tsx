@@ -69,44 +69,55 @@ export default function About() {
         // /> */}
       </div>
 
-      <div className="max-w-4xl">
-        <Paragraph className=" mt-4">
-          Hey there, I&apos;m Hussnain Mulazam — a Full-Stack Web Developer and
-          AI &amp; Agents Developer. I build scalable web apps and APIs with
-          React, Next.js, FastAPI, Node.js, PostgreSQL, and MongoDB, and I love
-          turning ideas into production-ready systems.
+      <div className="max-w-4xl space-y-4">
+        <Paragraph className="mt-4">
+          Hey there, I&apos;m <strong>Hussnain Mulazam</strong> — a Senior Full Stack AI Developer based in Lahore, Pakistan with <strong>4+ years of experience</strong> building scalable SaaS platforms, AI-powered applications, and production-ready web products for startups, businesses, and product teams.
         </Paragraph>
-        <Paragraph className=" mt-4">
-          My focus is building clean, user-friendly experiences on the frontend,
-          solid backend architecture, and reliable RESTful APIs with secure
-          authentication. I enjoy working across both SQL and NoSQL databases and
-          designing systems that can scale.
+        <Paragraph>
+          I can take ownership of the complete development lifecycle: from architecture and modern UI to backend APIs, databases, AI integrations, third-party services, cloud deployment, CI/CD pipelines, and ongoing optimization.
         </Paragraph>
 
-        <Paragraph className=" mt-4">
-          Recently, I&apos;ve been deep into AI agents and automation — building
-          intelligent workflows using OpenAI&apos;s Agents SDK, Playwright
-          automation, and vector search (Pinecone) to create practical tools that
-          solve real problems.
+        <div className="my-8 p-6 sm:p-7 rounded-2xl border border-neutral-200 bg-white shadow-sm">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-blue-600 text-lg">⚡</span>
+            <h3 className="font-heading font-bold text-lg text-neutral-900">
+              Core Capabilities &amp; Specializations
+            </h3>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 rounded-xl border border-neutral-100 bg-neutral-50/70">
+              <p className="font-bold text-sm text-neutral-900 mb-1">AI &amp; LLM Applications</p>
+              <p className="text-xs text-neutral-600 leading-relaxed">
+                OpenAI Agents SDK · LangChain · Gemini API · RAG Pipelines · Vector Search · Pinecone · Multi-Agent Workflows · Prompt Engineering · Tool Calling
+              </p>
+            </div>
+            <div className="p-4 rounded-xl border border-neutral-100 bg-neutral-50/70">
+              <p className="font-bold text-sm text-neutral-900 mb-1">SaaS &amp; Web Applications</p>
+              <p className="text-xs text-neutral-600 leading-relaxed">
+                B2B/B2C Multi-Tenant Architecture · Interactive Dashboards · Role-Based Access (RBAC) · JWT Authentication · Stripe Billing · Admin Portals
+              </p>
+            </div>
+            <div className="p-4 rounded-xl border border-neutral-100 bg-neutral-50/70">
+              <p className="font-bold text-sm text-neutral-900 mb-1">Full-Stack &amp; Backend Engineering</p>
+              <p className="text-xs text-neutral-600 leading-relaxed">
+                React · Next.js · TypeScript · Tailwind CSS · Python · FastAPI · Django · Node.js · Express · REST APIs · PostgreSQL · MongoDB
+              </p>
+            </div>
+            <div className="p-4 rounded-xl border border-neutral-100 bg-neutral-50/70">
+              <p className="font-bold text-sm text-neutral-900 mb-1">Cloud, DevOps &amp; Delivery</p>
+              <p className="text-xs text-neutral-600 leading-relaxed">
+                AWS (S3, EC2, RDS, CloudFront) · Docker Containers · Vercel · CI/CD with GitHub Actions · Codebase Takeovers &amp; Performance Tuning
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <Paragraph>
+          Beyond building, I serve as a <strong>Technical Recruiter at The Hafiz Project</strong> managing end-to-end talent sourcing, technical interview coordination, and hiring pipelines. I develop scalable AI systems at <strong>AIvonTech</strong>, and I mentor developers in Python, FastAPI, and AI integration through <strong>Code with Sunny</strong>.
         </Paragraph>
-        <Paragraph className=" mt-4">
-          I also teach and mentor developers through Code with Sunny, creating
-          hands-on learning projects and resources focused on Python, FastAPI,
-          and modern web development.
-        </Paragraph>
-        <Paragraph className=" mt-4">
-          Through this website, I share my projects, certifications, and what
-          I&apos;m learning. If you&apos;re interested in full-stack development,
-          backend engineering, or AI-powered apps, you&apos;ll feel at home here.
-        </Paragraph>
-        <Paragraph className=" mt-4">
-          My goal is to become a Software Engineer and AI expert — mastering AI
-          agents, automation, and real-world integrations while staying curious
-          about future technologies.
-        </Paragraph>
-        <Paragraph className=" mt-4">
-          Thanks for stopping by — feel free to reach out if you&apos;d like to
-          collaborate or build something impactful.
+
+        <Paragraph>
+          Whether you need an intelligent agentic workflow, a high-performance web platform, SaaS architecture, or a codebase takeover with performance optimization, I&apos;m always excited to collaborate and build impactful software.
         </Paragraph>
       </div>
     </div>

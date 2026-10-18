@@ -28,36 +28,38 @@ export const Products = () => {
             <Link
               href={product.slug ? `/projects/${product.slug}` : product.href}
               key={product.href}
-              className="group flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 hover:bg-gray-50 rounded-2xl transition duration-200 pt-4"
+              className="group p-5 sm:p-6 rounded-2xl border border-neutral-200 bg-white hover:border-neutral-300 hover:shadow-md transition-all duration-200 flex flex-col md:flex-row gap-6 items-start"
             >
               <Image
                 src={product.thumbnail}
-                alt="thumbnail"
-                height="200"
-                width="200"
-                className="rounded-md"
+                alt={product.title}
+                height="240"
+                width="320"
+                className="rounded-xl object-cover h-40 w-full md:w-56 flex-shrink-0 border border-neutral-100 shadow-2xs group-hover:scale-[1.02] transition-transform duration-200"
               />
-              <div className="flex flex-col justify-between">
+              <div className="flex flex-col justify-between h-full flex-1">
                 <div>
-                  <Heading
-                    as="h4"
-                    className="font-black text-lg md:text-lg lg:text-lg "
-                  >
+                  <h3 className="font-heading font-bold text-lg md:text-xl text-neutral-900 group-hover:text-blue-600 transition-colors">
                     {product.title}
-                  </Heading>
-                  <Paragraph className="text-sm md:text-sm lg:text-sm mt-2 max-w-xl">
+                  </h3>
+                  <Paragraph className="text-sm mt-2 text-neutral-600 leading-relaxed">
                     {product.description}
                   </Paragraph>
                 </div>
-                <div className="flex space-x-2 md:mb-1 mt-2 md:mt-0">
-                  {product.stack?.map((stack: string) => (
-                    <span
-                      key={stack}
-                      className="text-xs  md:text-xs lg:text-xs bg-gray-50 px-2 py-1 rounded-sm text-secondary"
-                    >
-                      {stack}
-                    </span>
-                  ))}
+                <div className="flex items-center justify-between pt-4 mt-2 flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5">
+                    {product.stack?.map((stack: string) => (
+                      <span
+                        key={stack}
+                        className="text-xs font-medium bg-neutral-50 text-neutral-700 px-2.5 py-1 rounded-md border border-neutral-200/80"
+                      >
+                        {stack}
+                      </span>
+                    ))}
+                  </div>
+                  <span className="text-xs font-semibold text-blue-600 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                    Explore Details &rarr;
+                  </span>
                 </div>
               </div>
             </Link>

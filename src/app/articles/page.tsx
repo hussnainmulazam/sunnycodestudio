@@ -8,7 +8,7 @@ import { Blogs } from "@/components/Blogs";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blogs | Hussnain Mulazam",
+  title: "Articles | Hussnain Mulazam",
   description:
     "Hussnain Mulazam is a Full-Stack Web Developer and AI Engineer. He builds scalable web apps, REST APIs, and AI-agent powered systems.",
 };
@@ -19,11 +19,14 @@ export default async function Blog() {
 
   return (
     <Container>
-      <span className="text-4xl">📝</span>
-      <Heading className="font-black pb-4">I write about technology</Heading>
-      <Paragraph className="pb-10">
-        Ever since <Highlight> I was a kid</Highlight>, I&apos;ve been
-        fascinated by technology.
+      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-200/60 text-blue-700 text-xs font-semibold mb-3">
+        Articles &amp; Insights
+      </div>
+      <Heading className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-neutral-900">
+        Engineering Insights &amp; Articles
+      </Heading>
+      <Paragraph className="mt-3 mb-10 text-neutral-600 text-sm md:text-base max-w-2xl leading-relaxed">
+        Deep dives into AI agent workflows, Next.js optimization, full-stack architecture, and production engineering.
       </Paragraph>
       <Blogs blogs={data} />
     </Container>

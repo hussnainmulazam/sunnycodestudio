@@ -1,0 +1,211 @@
+import { BlogLayout } from "@/components/BlogLayout";
+import { CodeWindow } from "@/components/CodeWindow";
+
+export const meta = {
+  date: "2026-04-10",
+  title: "Production Deployment Guide: Containerizing AI Applications with Docker, AWS & Vercel",
+  description:
+    "A battle-tested blueprint for deploying full-stack AI and Next.js applications: multi-stage Docker builds, AWS ECS container orchestration, Vercel Edge CDN, and automated CI/CD pipelines.",
+  image:
+    "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?q=80&w=2000&auto=format&fit=crop",
+  tags: ["Deployment", "Docker", "DevOps", "AWS"],
+};
+
+export default (props) => <BlogLayout meta={meta} {...props} />;
+
+Deploying modern full-stack applications—especially those integrating AI agent backends, vector search engines, and real-time streaming interfaces—introduces a unique set of infrastructure challenges. A typical monolithic deployment often fails when an intensive Python inference task starves the Node.js frontend process or when container cold-starts introduce unacceptable user latency.
+
+In this guide, we break down a production-tested deployment strategy: hosting high-speed **Next.js frontends on Vercel's global edge network**, running containerized **FastAPI & AI workloads on AWS ECS (Elastic Container Service)**, and securing the pipeline through automated **GitHub Actions CI/CD**.
+
+---
+
+## 1. Architectural Strategy: The Hybrid Multi-Cloud Model
+
+Rather than forcing everything into a single cloud provider, leading engineering organizations leverage the distinct strengths of specialized platforms:
+
+1. **Frontend on Vercel**:
+   - Zero-config edge routing and static asset distribution across worldwide POPs.
+   - Built-in incremental static regeneration (ISR) and serverless function scaling.
+   - Automatic preview deployments for pull requests.
+
+2. **Backend Services on AWS (ECS with Fargate)**:
+   - Serverless container orchestration without having to manage raw EC2 instances.
+   - Dedicated memory and vCPU allocations essential for long-lived LLM streams, background workers, and Celery tasks.
+   - Private VPC peering with managed databases (Amazon RDS PostgreSQL).
+
+3. **Data & Caching Layer**:
+   - **PostgreSQL (AWS RDS or Supabase)**: High-durability transactional database with automated backups.
+   - **Redis (Upstash / ElastiCache)**: In-memory store for rate-limiting, user session tokens, and LLM response caching.
+
+---
+
+## 2. Multi-Stage Dockerfile for Python AI Backends
+
+Python container images can quickly balloon to several gigabytes if build tools, compiler caches, and unnecessary dependencies remain in the final image. Using multi-stage Docker builds ensures minimal image footprint, faster container startup, and fewer security vulnerabilities.
+
+```dockerfile
+# Stage 1: Build & Dependency Resolution
+FROM python:3.11-slim as builder
+
+WORKDIR /app
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir --user -r requirements.txt
+
+# Stage 2: Final Lean Production Image
+FROM python:3.11-slim as runner
+
+WORKDIR /app
+
+# Create non-root user for security
+RUN groupadd -g 1001 appuser && \
+    useradd -u 1001 -g appuser -s /bin/bash -m appuser
+
+# Copy installed Python packages from builder
+COPY --from=builder /root/.local /home/appuser/.local
+COPY --chown=appuser:appuser . /app
+
+ENV PATH=/home/appuser/.local/bin:$PATH \
+    PYTHONUNBUFFERED=1 \
+    PORT=8000
+
+USER appuser
+
+EXPOSE 8000
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
+  CMD curl -f http://localhost:8000/health || exit 1
+
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4"]
+```
+
+---
+
+## 3. Docker Compose for Local & Staging Environments
+
+Before pushing to AWS, validating the complete ecosystem locally with Docker Compose avoids surprise runtime incompatibilities:
+
+```yaml
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://api:8000
+    depends_on:
+      - api
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:secret@db:5432/appdb
+      - REDIS_URL=redis://cache:6379/0
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    depends_on:
+      - db
+      - cache
+
+  db:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: appdb
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  cache:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+volumes:
+  pgdata:
+```
+
+---
+
+## 4. Automated CI/CD Pipeline with GitHub Actions
+
+Continuous deployment ensures that every merged PR triggers linting, container builds, push to Amazon ECR (Elastic Container Registry), and seamless zero-downtime task updates on AWS ECS.
+
+```yaml
+name: Deploy Backend to Amazon ECS
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build, Tag, and Push Docker Image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: ai-backend
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG ./backend
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
+
+      - name: Deploy Amazon ECS Task Definition
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v2
+        with:
+          task-definition: task-definition.json
+          service: ai-backend-service
+          cluster: production-cluster
+          wait-for-service-stability: true
+```
+
+---
+
+## 5. Security & Observability Best Practices
+
+Deploying to production is only the beginning. To keep your system available and secure:
+
+1. **Secrets Management**: Never commit `.env` files or API keys. Use AWS Secrets Manager or Doppler to inject credentials dynamically into ECS task containers at runtime.
+2. **Healthchecks & Self-Healing**: Implement dedicated `/health` and `/ready` endpoints. Configure your load balancer (AWS ALB) to automatically terminate and replace unhealthy containers.
+3. **Structured JSON Logging**: Stream logs to AWS CloudWatch or Datadog using standard JSON format with trace IDs so you can follow requests spanning from the Next.js frontend across background AI agent processes.
+4. **Zero-Trust Networking**: Put your database and internal APIs inside private subnets, allowing access only via the Application Load Balancer and internal security group IDs.
+
+---
+
+## Conclusion
+
+By isolating frontend rendering to Vercel's global CDN while orchestrating heavy AI compute inside Docker containers on AWS ECS, you achieve the gold standard of modern engineering: **instantaneous user experiences, elastic scalability, and strict security isolation**.

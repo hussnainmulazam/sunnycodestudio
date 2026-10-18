@@ -1,45 +1,61 @@
 export const timeline = [
   {
+    company: "The Hafiz Project",
+    title: "Technical Recruiter",
+    date: "August 2026 – Present",
+    description:
+      "Managed end-to-end recruitment support, including candidate sourcing, screening, initial interviews, technical interview coordination, and candidate tracking.",
+    responsibilities: [
+      "Manage end-to-end recruitment support, candidate sourcing, screening, and initial interviews",
+      "Coordinate technical interviews, candidate evaluations, and hiring pipeline communication",
+      "Utilize LinkedIn Recruiter, Google Sheets, Applicant Tracking Systems (ATS), and talent pipeline strategies",
+    ],
+  },
+  {
     company: "AIvonTech",
-    title: "Founder & AI Developer",
+    title: "Senior Full Stack AI Developer",
     date: "March 2026 – Present",
-    description: "Founded AIvonTech, an AI startup delivering full stack web apps and agentic AI systems for early-stage startups.",
+    description:
+      "Leading engineering of full stack web apps, scalable B2B SaaS platforms, and agentic AI systems for early-stage startups and product teams.",
     responsibilities: [
-      "Founded AIvonTech, an AI startup delivering full stack web apps and agentic AI systems for early-stage startups",
-      "Developed full stack applications with Next.js and FastAPI, integrating RAG pipelines and LLM-powered features",
-      "Deployed scalable REST APIs and PostgreSQL databases for production-grade client projects",
+      "Take end-to-end ownership of product development: architecture, UI/UX, backend APIs, databases, and AI integrations",
+      "Build autonomous multi-agent systems with OpenAI Agents SDK & LangChain, RAG pipelines, and Pinecone vector search",
+      "Deploy scalable REST APIs with FastAPI and PostgreSQL, containerized with Docker and automated via CI/CD pipelines",
     ],
   },
   {
-    company: "FISTA Solutions",
-    title: "Agentic AI Developer",
-    date: "May 2025 – September 2025",
-    description: "Built production-grade agentic AI systems using Python, FastAPI, and OpenAI/Gemini APIs for autonomous task execution.",
+    company: "FISTA SOLUTION",
+    title: "Web Developer",
+    date: "May 2024 – March 2026",
+    description:
+      "Developed high-performance web applications connecting modern frontends with scalable backend systems.",
     responsibilities: [
-      "Built production-grade agentic AI systems using Python, FastAPI, and OpenAI/Gemini APIs for autonomous task execution",
-      "Designed LLM-based pipelines with advanced prompt engineering, improving agent accuracy and response quality",
-      "Developed RESTful APIs with PostgreSQL integration to support AI-driven application features",
-      "Integrated AI agents with third-party APIs, enabling real-world automation across data retrieval workflows",
+      "Developed high-performance web applications connecting modern React/Next.js frontends with scalable backend systems",
+      "Built responsive interfaces with Tailwind CSS and developed secure APIs with Python, FastAPI, and PostgreSQL/SQLModel",
+      "Integrated third-party APIs and AI services (OpenAI, Gemini), and supported cloud deployments with Git version control",
     ],
   },
   {
-    company: "Chenab Group of Colleges",
-    title: "Computer Science Lecturer",
-    date: "August 2025 – March 2026",
-    description: "Taught programming, data structures, web development, and digital literacy to 50+ students.",
+    company: "Independent AI Consulting",
+    title: "Senior AI & Full Stack Developer",
+    date: "2024 – Present",
+    description:
+      "Delivered production-grade agentic AI systems, custom chatbots, LangChain workflows, and full-stack web applications for global startups and businesses.",
     responsibilities: [
-      "Taught programming, data structures, web development, and digital literacy to 50+ students",
-      "Designed project-based curriculum that improved student retention and practical coding skills",
+      "Built autonomous agentic AI workflows and intelligent automation systems reducing manual effort",
+      "Architected and deployed high-performance full-stack web applications with Python, FastAPI, and Next.js",
+      "Integrated complex LLM pipelines, RAG systems, vector search, and cloud infrastructure with Docker",
     ],
   },
   {
-    company: "Corvit Systems",
-    title: "Python & Web Development Instructor",
-    date: "August 2024 – January 2025",
-    description: "Delivered Python training covering OOP, data structures, file handling, and FastAPI to 30+ students.",
+    company: "Code with Sunny / Corvit Systems / Chenab Group of Colleges",
+    title: "Web & AI Instructor / Computer Lecturer",
+    date: "August 2024 – March 2026",
+    description:
+      "Mentored developers in web engineering and AI integration through project-based learning, focusing on production-ready applications and modern architectures.",
     responsibilities: [
-      "Delivered Python training covering OOP, data structures, file handling, and FastAPI to 30+ students",
-      "Designed interactive lessons and assignments that helped students transition into development roles",
+      "Mentored developers in web engineering, Python OOP, FastAPI backend architecture, and Next.js full-stack development",
+      "Instructed on production-ready LLM agent integrations, prompt engineering, and modern web architectures",
     ],
   },
 ];

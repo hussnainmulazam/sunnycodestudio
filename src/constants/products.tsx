@@ -16,8 +16,47 @@ import codewithsunny1 from "public/codewithsunny/Screenshot 2026-07-01 173506.pn
 import codewithsunny2 from "public/codewithsunny/Screenshot 2026-07-01 173532.png";
 import codewithsunny3 from "public/codewithsunny/Screenshot 2026-07-01 173544.png";
 import browserAgent from "public/images/browser-agent.png";
+import hafiz1 from "public/images/hafiz-1.png";
+import hafiz2 from "public/images/hafiz-2.png";
+import hafiz3 from "public/images/hafiz-3.png";
 
 export const products = [
+  {
+    href: "https://github.com/Sunny-Janjua",
+    title: "Hafiz App — AI-Powered Quran Recitation & Tajweed Learning Platform",
+    description:
+      "Intelligent Quran recitation and Tajweed learning platform analyzing recitation audio in real-time, providing phoneme-level mistake detection, correction, Tajweed rule coaching, and personalized memorization tracking.",
+    thumbnail: hafiz1,
+    images: [hafiz1, hafiz2, hafiz3],
+    stack: ["Next.js", "FastAPI", "Python", "Whisper AI", "PostgreSQL", "Docker"],
+    slug: "hafiz-app",
+    content: (
+      <div>
+        <p className="mb-4">
+          <strong>Hafiz App</strong> is an AI-powered Quran recitation and Tajweed learning platform engineered to help students, learners, and memorizers (Huffaz) perfect their recitation with real-time AI phoneme accuracy, Tajweed rule verification, and personalized progress tracking.
+        </p>
+        <p className="mb-6">
+          The platform uses state-of-the-art speech recognition and acoustic phoneme analysis to listen to the user&apos;s recitation, compare it against authentic Uthman Taha text and Tajweed rules (such as Ikhfa, Ghunnah, Idgham, Qalqalah, and Madd), and provide instant visual and acoustic guidance.
+        </p>
+
+        <h3 className="text-xl font-bold mb-3 text-neutral-900">🎯 Key Capabilities</h3>
+        <ul className="list-disc pl-5 mb-6 space-y-2 text-neutral-600">
+          <li><strong>Live Audio Waveform &amp; Pronunciation Scoring</strong>: Real-time feedback with accuracy percentages for pronunciation, Makharij, and Tajweed.</li>
+          <li><strong>Phoneme-Level Analysis</strong>: Highlights specific Arabic letters and sounds that need improvement.</li>
+          <li><strong>Personalized Memorization &amp; Revision Tracker</strong>: Smart spaced-repetition schedules ensuring long-term retention of Ayahs and Surahs.</li>
+          <li><strong>Interactive Tajweed Highlighting</strong>: Dynamic color-coded script displaying applicable recitation rules as the user speaks.</li>
+        </ul>
+
+        <h3 className="text-xl font-bold mb-3 text-neutral-900">🛠 Architecture &amp; Tech Stack</h3>
+        <ul className="list-disc pl-5 mb-6 space-y-2 text-neutral-600">
+          <li><strong>Frontend</strong>: Next.js, React, TypeScript, Tailwind CSS, Web Audio API</li>
+          <li><strong>Backend</strong>: FastAPI, Python, PostgreSQL, SQLModel, Docker</li>
+          <li><strong>AI &amp; Speech</strong>: Custom Whisper speech models, phoneme alignment, audio feature extraction</li>
+          <li><strong>Infrastructure</strong>: Containerized Docker deployments, CI/CD automated test pipelines</li>
+        </ul>
+      </div>
+    ),
+  },
   {
     href: "https://autopost-agentic-ai-system.vercel.app/",
     title: "AutoPost Agentic AI System",

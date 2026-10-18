@@ -12,6 +12,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        heading: ["var(--font-heading)", "Montserrat", "sans-serif"],
+        sans: ["var(--font-body)", "Open Sans", "sans-serif"],
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

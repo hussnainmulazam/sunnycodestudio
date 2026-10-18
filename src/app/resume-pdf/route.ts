@@ -88,13 +88,18 @@ export async function GET() {
 
   // Header
   addLine(resumeData.name, { bold: true, size: 18 });
-  addLine(resumeData.title, { size: 12 });
+  addWrapped(resumeData.headline, { bold: true, size: 10.5 });
   addLine(
     `Email: ${resumeData.contact.email}   Phone: ${resumeData.contact.phone}`,
-    { size: 11 }
+    { size: 10 }
   );
-  addWrapped(`GitHub: ${resumeData.contact.github}`, { size: 11 });
-  addWrapped(`LinkedIn: ${resumeData.contact.linkedin}`, { size: 11 });
+  addLine(
+    `Location: ${resumeData.location}`,
+    { size: 10 }
+  );
+  addWrapped(`GitHub: ${resumeData.contact.github}`, { size: 9.5 });
+  addWrapped(`LinkedIn: ${resumeData.contact.linkedin}`, { size: 9.5 });
+  addWrapped(`Upwork: ${resumeData.contact.upwork}`, { size: 9.5 });
 
   // Summary
   addSectionTitle("Summary");
@@ -105,8 +110,8 @@ export async function GET() {
   addSectionTitle("Skills");
   addWrapped(`Frontend: ${resumeData.skills.frontend.join(", ")}`);
   addWrapped(`Backend: ${resumeData.skills.backend.join(", ")}`);
-  addWrapped(`AI & Tools: ${resumeData.skills.ai.join(", ")}`);
-  addWrapped(`Other Tools: ${resumeData.skills.tools.join(", ")}`);
+  addWrapped(`AI & LLMs: ${resumeData.skills.ai.join(", ")}`);
+  addWrapped(`Cloud, DevOps & Tools: ${resumeData.skills.tools.join(", ")}`);
   y -= paragraphGap;
 
   // Experience

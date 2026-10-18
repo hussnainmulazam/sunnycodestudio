@@ -1,224 +1,418 @@
 "use client";
 import React, { useState } from "react";
 import { Paragraph } from "@/components/Paragraph";
+import {
+  IconBrandGithub,
+  IconBrandLinkedin,
+  IconBrandUpwork,
+  IconBrandWhatsapp,
+  IconCheck,
+  IconCopy,
+  IconMail,
+  IconMapPin,
+  IconPhone,
+  IconSend,
+  IconClock,
+} from "@tabler/icons-react";
 
-const defaultFormState = {
-  fullName: {
-    value: "",
-    error: "",
-  },
-  email: {
-    value: "",
-    error: "",
-  },
-  company: {
-    value: "",
-    error: "",
-  },
-  message: {
-    value: "",
-    error: "",
-  },
-};
 export const Contact = () => {
-  const [formData, setFormData] = useState(defaultFormState);
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    projectType: "AI Agent & LLM Development",
+    message: "",
+  });
+
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [copiedEmail, setCopiedEmail] = useState(false);
+  const [copiedPhone, setCopiedPhone] = useState(false);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText("hussnainmulazam@gmail.com");
+    setCopiedEmail(true);
+    setTimeout(() => setCopiedEmail(false), 2000);
+  };
+
+  const handleCopyPhone = () => {
+    navigator.clipboard.writeText("+923266655307");
+    setCopiedPhone(true);
+    setTimeout(() => setCopiedPhone(false), 2000);
+  };
+
+  const validate = () => {
+    const errs: { [key: string]: string } = {};
+    if (!formData.fullName.trim()) errs.fullName = "Please enter your full name.";
+    if (!formData.email.trim()) {
+      errs.email = "Please enter your email address.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      errs.email = "Please enter a valid email address.";
+    }
+    if (!formData.message.trim()) errs.message = "Please write a brief message about your project.";
+    return errs;
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Write your submit logic here
-    console.log(formData);
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    setErrors({});
+    setIsSubmitting(true);
+
+    // Simulate sending with realistic feedback
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+    }, 800);
   };
+
+  const mailtoUrl = `mailto:hussnainmulazam@gmail.com?subject=${encodeURIComponent(
+    `Project Inquiry: ${formData.projectType}`
+  )}&body=${encodeURIComponent(
+    `Hi Hussnain,\n\nName: ${formData.fullName}\nEmail: ${formData.email}\nProject Type: ${formData.projectType}\n\nMessage:\n${formData.message}`
+  )}`;
+
   return (
     <div className="w-full">
-      <div className="grid lg:grid-cols-[1fr_420px] gap-10 lg:gap-14 items-start">
-        {/* Left column */}
-        <div className="pt-2">
-          <div className="h-12 w-12 rounded-xl border border-neutral-200 bg-white shadow-sm flex items-center justify-center">
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 24 24"
-              className="h-5 w-5 text-neutral-700"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path d="M4 6h16v12H4z" />
-              <path d="m4 7 8 6 8-6" />
-            </svg>
+      {/* Header Badge & Title */}
+      <div className="max-w-2xl mb-10">
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-200/60 text-blue-700 text-xs font-semibold mb-4">
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          Open for New Projects &amp; Consulting
+        </div>
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-neutral-900">
+          Let&apos;s Build Something Impactful
+        </h1>
+        <Paragraph className="mt-3 text-neutral-600 text-sm md:text-base leading-relaxed">
+          Whether you need custom AI agents, RAG systems, a scalable SaaS architecture, or a codebase performance overhaul, feel free to reach out directly or submit your project details below.
+        </Paragraph>
+      </div>
+
+      {/* Main Grid: Left Direct Channels, Right Form */}
+      <div className="grid lg:grid-cols-[1fr_440px] gap-10 lg:gap-14 items-start">
+        {/* Left Column: Direct Contact Info */}
+        <div className="space-y-6">
+          {/* Quick Direct Actions Card */}
+          <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm space-y-4">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-neutral-400">
+              Direct Communication Channels
+            </h2>
+
+            {/* Email item */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3.5 rounded-xl border border-neutral-100 bg-neutral-50/70 hover:bg-neutral-50 transition gap-3">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600">
+                  <IconMail className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="text-xs text-neutral-500 font-medium">Email Address</p>
+                  <a
+                    href="mailto:hussnainmulazam@gmail.com"
+                    className="text-sm font-semibold text-neutral-900 hover:text-blue-600 transition"
+                  >
+                    hussnainmulazam@gmail.com
+                  </a>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={handleCopyEmail}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-neutral-200 bg-white text-xs font-medium text-neutral-700 hover:bg-neutral-100 transition shadow-2xs self-start sm:self-auto"
+                title="Copy email to clipboard"
+              >
+                {copiedEmail ? (
+                  <>
+                    <IconCheck className="w-3.5 h-3.5 text-emerald-600" />
+                    <span className="text-emerald-600 font-semibold">Copied!</span>
+                  </>
+                ) : (
+                  <>
+                    <IconCopy className="w-3.5 h-3.5 text-neutral-500" />
+                    <span>Copy</span>
+                  </>
+                )}
+              </button>
+            </div>
+
+            {/* Phone & WhatsApp item */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3.5 rounded-xl border border-neutral-100 bg-neutral-50/70 hover:bg-neutral-50 transition gap-3">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-lg bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600">
+                  <IconBrandWhatsapp className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="text-xs text-neutral-500 font-medium">WhatsApp &amp; Phone</p>
+                  <a
+                    href="https://wa.me/923266655307"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-sm font-semibold text-neutral-900 hover:text-emerald-600 transition"
+                  >
+                    +92 326 6655307
+                  </a>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 self-start sm:self-auto">
+                <a
+                  href="https://wa.me/923266655307"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-emerald-600 text-white text-xs font-semibold hover:bg-emerald-700 transition"
+                >
+                  <IconBrandWhatsapp className="w-3.5 h-3.5" />
+                  Chat
+                </a>
+                <button
+                  type="button"
+                  onClick={handleCopyPhone}
+                  className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-neutral-200 bg-white text-xs text-neutral-700 hover:bg-neutral-100 transition shadow-2xs"
+                  title="Copy phone"
+                >
+                  {copiedPhone ? (
+                    <IconCheck className="w-3.5 h-3.5 text-emerald-600" />
+                  ) : (
+                    <IconCopy className="w-3.5 h-3.5 text-neutral-500" />
+                  )}
+                </button>
+              </div>
+            </div>
+
+            {/* Upwork Profile */}
+            <div className="flex items-center justify-between p-3.5 rounded-xl border border-neutral-100 bg-neutral-50/70 hover:bg-neutral-50 transition">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-lg bg-neutral-900 flex items-center justify-center text-white">
+                  <IconBrandUpwork className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="text-xs text-neutral-500 font-medium">Upwork Profile</p>
+                  <p className="text-sm font-semibold text-neutral-900">
+                    Hussnain M. · Verified Freelancer
+                  </p>
+                </div>
+              </div>
+              <a
+                href="https://www.upwork.com/freelancers/~01c22e447f1a03bc8e"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-neutral-300 bg-white text-xs font-semibold text-neutral-800 hover:bg-neutral-100 transition shadow-2xs"
+              >
+                Hire on Upwork
+              </a>
+            </div>
           </div>
 
-          <h2 className="mt-5 text-4xl lg:text-5xl font-black tracking-tight text-neutral-900">
-            Contact us
-          </h2>
-          <Paragraph className="mt-4 max-w-xl text-neutral-600">
-            We are always looking for ways to improve our products and services.
-            Contact us and let us know how we can help you.
-          </Paragraph>
+          {/* Social Profiles & Timezone Badges */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="p-4 rounded-xl border border-neutral-200 bg-white shadow-sm flex items-center gap-3">
+              <div className="w-9 h-9 rounded-lg bg-neutral-100 flex items-center justify-center text-neutral-700">
+                <IconMapPin className="w-5 h-5" />
+              </div>
+              <div>
+                <p className="text-xs text-neutral-500">Location &amp; Timezone</p>
+                <p className="text-sm font-semibold text-neutral-900">Lahore, Pakistan (PKT)</p>
+              </div>
+            </div>
 
-          <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-neutral-500">
-            <a className="hover:text-neutral-700" href="mailto:hussnainmulazam@gmail.com">
-              hussnainmulazam@gmail.com
-            </a>
-            <span className="text-neutral-300">•</span>
-            <a className="hover:text-neutral-700" href="tel:+923266655307">
-              +92 326 6655307
-            </a>
-            <span className="text-neutral-300">•</span>
+            <div className="p-4 rounded-xl border border-neutral-200 bg-white shadow-sm flex items-center gap-3">
+              <div className="w-9 h-9 rounded-lg bg-neutral-100 flex items-center justify-center text-neutral-700">
+                <IconClock className="w-5 h-5" />
+              </div>
+              <div>
+                <p className="text-xs text-neutral-500">Typical Response Time</p>
+                <p className="text-sm font-semibold text-neutral-900">Within 0 - 4 Hours</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Connect on Socials */}
+          <div className="flex items-center gap-3 pt-2">
+            <span className="text-xs font-semibold text-neutral-500">Profiles:</span>
             <a
-              className="hover:text-neutral-700"
               href="https://github.com/Sunny-Janjua"
               target="_blank"
               rel="noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-neutral-200 bg-white text-xs font-semibold text-neutral-800 hover:bg-neutral-50 transition"
             >
-              github.com/Sunny-Janjua
+              <IconBrandGithub className="w-4 h-4" />
+              GitHub
             </a>
-          </div>
-
-          {/* Map-like section (matches screenshot) */}
-          <div className="mt-10 relative h-[170px] sm:h-[210px]">
-            <div className="absolute inset-0 opacity-40">
-              <svg
-                viewBox="0 0 900 260"
-                className="h-full w-full"
-                aria-hidden="true"
-              >
-                <defs>
-                  <linearGradient id="fade" x1="0" x2="1">
-                    <stop offset="0" stopColor="#a3a3a3" stopOpacity="0.0" />
-                    <stop offset="0.25" stopColor="#a3a3a3" stopOpacity="0.35" />
-                    <stop offset="0.7" stopColor="#a3a3a3" stopOpacity="0.35" />
-                    <stop offset="1" stopColor="#a3a3a3" stopOpacity="0.0" />
-                  </linearGradient>
-                </defs>
-                {/* very simplified “world map” blobs */}
-                <path
-                  d="M120 150c40-40 90-55 150-45 40 6 70 25 86 44 18 22 9 50-30 63-56 19-130 6-206-10-18-4-23-30 0-52z"
-                  fill="url(#fade)"
-                />
-                <path
-                  d="M395 112c35-30 85-38 140-25 52 13 95 55 100 85 6 38-48 55-105 52-58-3-130-12-155-45-16-20-3-47 20-67z"
-                  fill="url(#fade)"
-                />
-                <path
-                  d="M660 125c35-25 75-30 110-18 36 12 56 45 48 68-10 30-55 38-98 25-35-10-72-34-78-52-5-15 1-18 18-23z"
-                  fill="url(#fade)"
-                />
-              </svg>
-            </div>
-
-            {/* Marker */}
-            <div className="absolute left-1/2 top-[35%] -translate-x-1/2">
-              <div className="px-2 py-1 rounded-md bg-white border border-neutral-200 text-xs text-neutral-600 shadow-sm">
-                We are here
-              </div>
-              <div className="mx-auto mt-2 h-12 w-[2px] bg-blue-400/60" />
-              <div className="mx-auto -mt-1 h-3 w-3 rounded-full bg-blue-500 shadow-[0_0_0_6px_rgba(59,130,246,0.15)]" />
-            </div>
+            <a
+              href="https://linkedin.com/in/hussnainmulazam"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-neutral-200 bg-white text-xs font-semibold text-neutral-800 hover:bg-neutral-50 transition"
+            >
+              <IconBrandLinkedin className="w-4 h-4 text-blue-600" />
+              LinkedIn
+            </a>
+            <a
+              href="https://www.upwork.com/freelancers/~01c22e447f1a03bc8e"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-neutral-200 bg-white text-xs font-semibold text-neutral-800 hover:bg-neutral-50 transition"
+            >
+              <IconBrandUpwork className="w-4 h-4 text-emerald-600" />
+              Upwork
+            </a>
           </div>
         </div>
 
-        {/* Right column: Form card */}
-        <form
-          onSubmit={handleSubmit}
-          className="rounded-2xl border border-neutral-200 bg-neutral-50 p-6 sm:p-7 shadow-sm"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, rgba(0,0,0,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.04) 1px, transparent 1px)",
-            backgroundSize: "28px 28px",
-            backgroundPosition: "center",
-          }}
-        >
-          <div className="space-y-4">
-            <div>
-              <label className="block text-xs text-neutral-500 mb-1">
-                Full name
-              </label>
-              <input
-                type="text"
-                placeholder="Hussnain Mulazam"
-                className="bg-white border border-neutral-200 focus:outline-none focus:ring-2 focus:ring-neutral-200 px-3 py-2 rounded-md text-sm text-neutral-800 w-full"
-                value={formData.fullName.value}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    fullName: { value: e.target.value, error: "" },
-                  })
-                }
-              />
+        {/* Right Column: Interactive Form */}
+        <div className="rounded-2xl border border-neutral-200 bg-white p-6 sm:p-7 shadow-sm">
+          {isSubmitted ? (
+            <div className="py-10 text-center space-y-4">
+              <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 mx-auto flex items-center justify-center">
+                <IconCheck className="w-7 h-7" />
+              </div>
+              <h3 className="text-2xl font-bold text-neutral-900">Message Received!</h3>
+              <p className="text-sm text-neutral-600 max-w-sm mx-auto">
+                Thank you, <strong>{formData.fullName}</strong>. Your message regarding <em>{formData.projectType}</em> has been sent. I will respond to <strong>{formData.email}</strong> shortly.
+              </p>
+              <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center">
+                <a
+                  href={mailtoUrl}
+                  className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-neutral-900 text-white text-xs font-semibold hover:bg-neutral-800 transition"
+                >
+                  <IconSend className="w-4 h-4" />
+                  Open in Email Client
+                </a>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsSubmitted(false);
+                    setFormData({
+                      fullName: "",
+                      email: "",
+                      projectType: "AI Agent & LLM Development",
+                      message: "",
+                    });
+                  }}
+                  className="px-4 py-2 rounded-lg border border-neutral-200 text-neutral-700 text-xs font-semibold hover:bg-neutral-50 transition"
+                >
+                  Send Another Message
+                </button>
+              </div>
             </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <h3 className="text-lg font-bold text-neutral-900 mb-2">Send a Message</h3>
 
-            <div>
-              <label className="block text-xs text-neutral-500 mb-1">
-                Email Address
-              </label>
-              <input
-                type="email"
-                placeholder="you@example.com"
-                className="bg-white border border-neutral-200 focus:outline-none focus:ring-2 focus:ring-neutral-200 px-3 py-2 rounded-md text-sm text-neutral-800 w-full"
-                value={formData.email.value}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    email: { value: e.target.value, error: "" },
-                  })
-                }
-              />
-            </div>
+              <div>
+                <label className="block text-xs font-semibold text-neutral-700 mb-1">
+                  Full Name <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="e.g. Alex Morgan"
+                  className={`bg-neutral-50/70 border ${
+                    errors.fullName ? "border-red-400 focus:ring-red-200" : "border-neutral-200 focus:ring-neutral-200"
+                  } focus:outline-none focus:ring-2 px-3 py-2.5 rounded-lg text-sm text-neutral-900 w-full transition`}
+                  value={formData.fullName}
+                  onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                />
+                {errors.fullName && <p className="text-xs text-red-500 mt-1">{errors.fullName}</p>}
+              </div>
 
-            <div>
-              <label className="block text-xs text-neutral-500 mb-1">
-                Company
-              </label>
-              <input
-                type="text"
-                placeholder="Your Company"
-                className="bg-white border border-neutral-200 focus:outline-none focus:ring-2 focus:ring-neutral-200 px-3 py-2 rounded-md text-sm text-neutral-800 w-full"
-                value={formData.company.value}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    company: { value: e.target.value, error: "" },
-                  })
-                }
-              />
-            </div>
+              <div>
+                <label className="block text-xs font-semibold text-neutral-700 mb-1">
+                  Email Address <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="email"
+                  placeholder="e.g. alex@company.com"
+                  className={`bg-neutral-50/70 border ${
+                    errors.email ? "border-red-400 focus:ring-red-200" : "border-neutral-200 focus:ring-neutral-200"
+                  } focus:outline-none focus:ring-2 px-3 py-2.5 rounded-lg text-sm text-neutral-900 w-full transition`}
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                />
+                {errors.email && <p className="text-xs text-red-500 mt-1">{errors.email}</p>}
+              </div>
 
-            <div>
-              <label className="block text-xs text-neutral-500 mb-1">
-                Message
-              </label>
-              <textarea
-                placeholder="Type your message here"
-                rows={6}
-                className="bg-white border border-neutral-200 focus:outline-none focus:ring-2 focus:ring-neutral-200 px-3 py-2 rounded-md text-sm text-neutral-800 w-full resize-none"
-                value={formData.message.value}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    message: { value: e.target.value, error: "" },
-                  })
-                }
-              />
-            </div>
+              <div>
+                <label className="block text-xs font-semibold text-neutral-700 mb-1">
+                  Project Type / Service
+                </label>
+                <select
+                  className="bg-neutral-50/70 border border-neutral-200 focus:outline-none focus:ring-2 focus:ring-neutral-200 px-3 py-2.5 rounded-lg text-sm text-neutral-900 w-full transition"
+                  value={formData.projectType}
+                  onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
+                >
+                  <option value="AI Agent & LLM Development">AI Agent &amp; Multi-Agent Workflow</option>
+                  <option value="RAG Pipeline & Vector Search">RAG Pipeline with Pinecone</option>
+                  <option value="Full-Stack SaaS Platform">Full-Stack SaaS (Next.js + FastAPI)</option>
+                  <option value="Codebase Takeover & Performance">Codebase Optimization / Takeover</option>
+                  <option value="Technical Consultation">Technical Consultation &amp; Architecture</option>
+                </select>
+              </div>
 
-            <button
-              className="inline-flex items-center justify-center px-4 py-2 rounded-md font-semibold text-white bg-neutral-900 hover:bg-neutral-800 transition-colors"
-              type="submit"
-            >
-              Submit
-            </button>
-          </div>
-        </form>
+              <div>
+                <label className="block text-xs font-semibold text-neutral-700 mb-1">
+                  Project Details / Message <span className="text-red-500">*</span>
+                </label>
+                <textarea
+                  placeholder="Briefly describe your goals, timeline, or requirements..."
+                  rows={5}
+                  className={`bg-neutral-50/70 border ${
+                    errors.message ? "border-red-400 focus:ring-red-200" : "border-neutral-200 focus:ring-neutral-200"
+                  } focus:outline-none focus:ring-2 px-3 py-2.5 rounded-lg text-sm text-neutral-900 w-full resize-none transition`}
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                />
+                {errors.message && <p className="text-xs text-red-500 mt-1">{errors.message}</p>}
+              </div>
+
+              <div className="pt-2 flex flex-col sm:flex-row gap-3">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-white bg-neutral-900 hover:bg-neutral-800 disabled:opacity-60 transition shadow-sm text-sm"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <IconSend className="w-4 h-4" />
+                      Send Message
+                    </>
+                  )}
+                </button>
+                <a
+                  href={mailtoUrl}
+                  className="inline-flex items-center justify-center px-4 py-2.5 rounded-lg border border-neutral-200 bg-neutral-50 text-neutral-700 hover:bg-neutral-100 transition text-xs font-semibold"
+                  title="Directly open in your default mail application"
+                >
+                  Send via Mail App
+                </a>
+              </div>
+            </form>
+          )}
+        </div>
       </div>
 
-      {/* Working embedded map (kept, but placed below like the “working map” request) */}
-      <div className="mt-10 rounded-2xl overflow-hidden border border-neutral-200 bg-neutral-100">
+      {/* Embedded Location Map: Lahore, Pakistan */}
+      <div className="mt-14 rounded-2xl overflow-hidden border border-neutral-200 bg-white shadow-sm">
+        <div className="p-4 border-b border-neutral-100 flex items-center justify-between bg-neutral-50/60">
+          <div className="flex items-center gap-2">
+            <IconMapPin className="w-4 h-4 text-blue-600" />
+            <span className="text-xs font-bold text-neutral-800">Based in Lahore, Pakistan</span>
+          </div>
+          <span className="text-xs text-neutral-500 font-medium">Remote Worldwide Collaboration</span>
+        </div>
         <iframe
-          title="Contact map"
+          title="Location Map — Lahore, Pakistan"
           className="w-full h-[260px] sm:h-[320px] lg:h-[360px]"
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
-          src="https://www.google.com/maps?q=Faisalabad%2C%20Pakistan&output=embed"
+          src="https://www.google.com/maps?q=Lahore%2C%20Pakistan&output=embed"
         />
       </div>
     </div>

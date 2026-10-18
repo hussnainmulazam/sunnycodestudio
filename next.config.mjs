@@ -2,6 +2,12 @@
 import nextMDX from "@next/mdx";
 import remarkGfm from "remark-gfm";
 import rehypePrism from "@mapbox/rehype-prism";
+import bundleAnalyzer from "@next/bundle-analyzer";
+
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+  openAnalyzer: false,
+});
 
 const nextConfig = {
   images: {
@@ -9,12 +15,27 @@ const nextConfig = {
   },
   experimental: {
     mdxRs: false,
+    serverComponentsExternalPackages: ["tailwind-merge"],
   },
   async rewrites() {
     return [
       {
         source: "/resume.pdf",
         destination: "/resume-pdf",
+      },
+    ];
+  },
+  async redirects() {
+    return [
+      {
+        source: "/blog",
+        destination: "/articles",
+        permanent: true,
+      },
+      {
+        source: "/blog/:slug*",
+        destination: "/articles/:slug*",
+        permanent: true,
       },
     ];
   },
@@ -28,4 +49,4 @@ const withMDX = nextMDX({
   },
 });
 
-export default withMDX(nextConfig);
+export default withBundleAnalyzer(withMDX(nextConfig));
